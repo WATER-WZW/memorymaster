@@ -1,0 +1,11 @@
+<style>
+input{border:1px solid #ff9900;}
+div {width:300px;position:relative;}
+p {float:left}
+.file {position:absolute;top:20px;right:300px;top:0;
+right:73px;width:0px;height:30px;filter:alpha(opacity=0);
+-moz-opacity:0;opacity:0;}
+#txt {height:20px;margin:1px}
+#ii {width:70px;height:24px;margin-top:1px;
+margin-top:2px;_margin-top:2px;}
+</style>

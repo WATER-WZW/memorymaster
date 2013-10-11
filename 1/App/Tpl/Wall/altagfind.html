@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+  <include file="Public:head" />
+  <load href="../Public/Css/Page.css"/>
+<div id="content_box">
+
+<script type="text/javascript">
+ function theme()
+ {
+   //alert("jjj");
+   document.form1.action = "{:U('Wall/themefind')}";
+	document.form1.submit();
+ } 
+function myid()
+ {
+   //alert("jjj");
+   document.form1.action = "{:U('Wall/idfind')}";
+	document.form1.submit();
+ }
+ function mytag()
+ {	
+	document.form1.action = "{:U('Wall/tagfind')}";
+	document.form1.submit();
+ }
+
+</script>
+
+
+<h3>  所属标签：{$altag}
+  </h3>
+
+<div class="clr"></div>
+<form name="form1" id="form1" method="post">
+<h3>图片查询:<input type="text" name="album_name" size="30" maxlength="20" class="inputtxt_small" id="album_name" />
+<input type="button" name="submit1" value="主题查询" class="formbtn" onclick="javascript:theme();" />
+
+<input type="button" name="submit2" value="编号查询" class="formbtn" onclick="javascript:myid();" /><input type="button" name="submit2" value="标签查询" class="formbtn" onclick="javascript:mytag();" />
+</h3>
+</form>
+
+<hr />
+<div class="clr"></div>
+
+
+<ul class="thumb">
+<volist name="albumlist" id="vo">
+<li>
+<a href="{:U('Wall/listphoto',array('id'=>$vo['id']))}">
+<if condition="empty($vo['cover'])" >
+<img src="../Public/Images/nocover.jpg" alt="{$vo.album_name}" />
+<else />
+<img src="__PUBLIC__/Uploads/Albums/s_{$vo.cover}" alt="{$vo.album_name}" />
+</if>
+</a>
+<p>相册:{$vo.album_name}<BR />相片数:{$vo.imgnum}<BR />点击:{$vo.hits}<BR />创建时间:{$vo.create_time|Date="Y-m-d",###}</p>
+</li>
+</volist>
+</ul>
+
+<div class="clr"></div>
+{$pagebar} 
+<div class="clr"></div>
+
+</div>
+</html>

@@ -1,0 +1,102 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<include file="Public:head" />
+<load href="../Public/Css/Page.css"/>
+<load href="../Public/Js/jquery.akeditable.js"/>
+<load href="../Public/Js/uploadify/uploadify.css"/>
+<load href="../Public/Js/uploadify/swfobject.js"/>
+<load href="../Public/Js/uploadify/jquery.uploadify.v2.1.4.min.js"/>
+ 
+ <!--
+<script>
+$(document).ready(function() {
+  //var tmp=document.getElementById("mytag").value;
+  //var $tmp = $("#mytag").val();
+  $('#file_upload').uploadify({
+  'script'      : "<?php echo U('Album/uploadimgs',array('id'=>$albumarr['id']));?>",
+  'uploader'    : '../Public/Js/uploadify/uploadify.swf',
+  'scriptData'  : {'upattsid' : '<?=session_id()?>','uploadifykey':'d909e88672fa5a5c58e819c211a101b4'},
+  'cancelImg'   : '../Public/Js/uploadify/cancel.png',
+                              'folder'      : './Public/Uploads/Albums/',//此处已改
+  'fileExt'     : '*.jpg;*.gif;*.png;',
+  'fileDesc'    : '图片文件jpg,gif,png',
+  'queueSizeLimit' : 5,
+  'sizeLimit'   : 2048000,
+  'multi'       : true,
+  'onError'     : function (event,ID,fileObj,errorObj) {
+      alert(errorObj.type + ' Error: ' + errorObj.info);
+    },
+  'onAllComplete':function(event,data){
+	  JDialog(data.filesUploaded + '文件上传成功!',1,1);
+	  }
+ }
+ ); 
+ 
+ 
+$(".loadImage").zxxbox({
+    bar: false,
+    bgclose:true
+});
+
+});
+</script>
+-->
+
+<div id="content_box">
+<h3><input type="button" name="submit" value="返回相册列表" class="formbtn" onclick="javascript:window.location='{:U('Album/index')}'" /><input type="button" name="submit" value="当前相册图片排序" class="formbtn" onclick="javascript:window.location='{:U('Album/sortimg',array('id'=>$albumarr['id']))}'" />相册>>{$albumarr.album_name}图片管理
+</h3>
+<hr />
+<div class="clr"></div>
+说明：上传允许文件类型：gif png jpg 图像文件,文件最大为2M
+
+<!--
+<form action="{:U('Album/uploadimgs')}" method="post" enctype="multipart/form-data">
+<div style="width:500px; border:1px solid #D0D0D0; padding:5px;">
+<input type="file" id="file_upload" name="file_upload" />
+</div>
+<BR />
+<input type="submit" class="formbtn" value="上传图片" />
+</form>
+-->
+  <form action="{:U('Album/uploadimgs',array('id'=>$albumarr['id']))}" method="post" enctype="multipart/form-data">
+<div style="width:500px; border:1px solid #D0D0D0; padding:5px;">
+<input type="file" id="file_upload" name="file_upload" />
+
+</div>
+<BR />
+标签:<input type="text" name="mytag" size="30" maxlength="20" class="inputtxt_small" id="mytag" />
+<input type="submit" class="formbtn" value="上传图片" />
+
+</form>
+<hr />
+
+
+
+
+
+
+
+<div class="clr"></div>
+
+<ul class="thumb">
+<volist name="albumlist" id="vo">
+<li id="list{$vo.id}"><eq name="vo['iscover']" value="1" ><div class="covertitle"></div></eq>
+  <a class="loadImage" href=" __PUBLIC__/Uploads/Albums/b_{$vo.pickey}"><img src="__PUBLIC__/Uploads/Albums/b_{$vo.pickey}" alt="{$vo.name}" />
+</a>
+<p>名称:<span id="clname{$vo.id}">{$vo.name}</span><BR />点击:{$vo.hits}<BR /><a href="javascript:;" onclick="akedit('{:U('Album/editpname',array('id'=>$vo['id'],'oldname'=>$vo['name']))}','clname{$vo.id}',{
+		        type : 'text',
+				name : 'photo_name',
+                cssname:'inputtxt_short',
+                btncss:'eformbtn',
+	            submit:'修改'
+				});">修改</a> | <a href="javascript:;" onclick="removeData({$vo.id},'{:U('Album/delimg',array('id'=>$vo['id']))}','确定删除此图片？','#list{$vo.id}');">删除</a> | <a href="javascript:void(0);" onclick="ajaxpost('post','{:U('Album/setcover',array('pid'=>$vo['pid'],'id'=>$vo['id']))}','json','')" title="设置为相册封面图" id="cover">设为封面图</a>
+  |标签：{$vo.tag} </p>
+</li>
+</volist>
+</ul>
+
+<div class="clr"></div>
+{$pagebar} 
+<div class="clr"></div>
+</div>
+</html>

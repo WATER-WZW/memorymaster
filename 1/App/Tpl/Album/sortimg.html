@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<include file="Public/head" />
+<load href="../Public/Js/ui/jquery.ui.core.js"/>
+<load href="../Public/Js/ui/jquery.ui.widget.js"/>
+<load href="../Public/Js/ui/jquery.ui.mouse.js"/>
+<load href="../Public/Js/ui/jquery.ui.sortable.js"/>
+<script>
+$(function() {
+$( "#sortable" ).sortable();
+$( "#sortable" ).disableSelection();
+});
+function save_sort_edit(){
+		var result = $('#sortable').sortable('toArray');
+		//alert(result);
+		ajaxpost('post','{:U('Album/savesortimg')}','json',{'pid':<php>echo $albumarr['id'];</php>,'mysortresult':result});
+}
+</script>
+
+<div id="content_box">
+<h3><input type="button" name="submit" value="返回图片列表" class="formbtn" onclick="javascript:window.location='{:U('Album/listphoto',array('id'=>$albumarr['id']))}'" />相册>>{$albumarr.album_name}图片排序</h3>
+<hr />
+<div class="clr"></div>
+
+<ul id="sortable">
+<volist name="imglist" id="vo">
+
+	<li id="{$vo.id}">
+<img src="__PUBLIC__/Uploads/Albums/s_{$vo.pickey}" alt="{$vo.name}" /><p>{$vo.name}</p></li>
+</volist>
+</ul>
+<div class="clr"></div>
+<p>
+<input type="button" class="formbtn" value="保存排序"  onclick="save_sort_edit()">
+</p>
+<p id="resultarea"></p>
+
+
+</div>

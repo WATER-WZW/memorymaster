@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+  <include file="Public:head" />
+  <load href="../Public/Css/Page.css"/>
+<div id="content_box">
+
+<ul class="thumb">
+<volist name="albumlist" id="vo">
+<li>
+<a href="{:U('Index/listphoto',array('id'=>$vo['id']))}">
+<if condition="empty($vo['cover'])" >
+<img src="../Public/Images/nocover.jpg" alt="{$vo.album_name}" />
+<else />
+<img src="__PUBLIC__/Uploads/Albums/s_{$vo.cover}" alt="{$vo.album_name}" />
+</if>
+</a>
+<p>相册:{$vo.album_name}<BR />相片数:{$vo.imgnum}<BR />相册编号:{$vo.id}<BR />点击:{$vo.hits}<BR />创建时间:{$vo.create_time|Date="Y-m-d",###}</p>
+</li>
+</volist>
+</ul>
+
+<div class="clr"></div>
+{$pagebar} 
+<div class="clr"></div>
+
+</div>
+</html>

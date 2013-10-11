@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<include file="Public:head" />
+<load href="../Public/Css/Page.css"/>
+<load href="../Public/Images/css_pirobox/style/style.css"/>
+<load href="../Public/Js/jquery.pirobox.js"/>
+<script type="text/javascript">
+$(document).ready(function() {
+	$().piroBox({
+			my_speed: 400, //animation speed
+			bg_alpha: 0.3, //background opacity
+			slideShow : true, // true == slideshow on, false == slideshow off
+			slideSpeed : 4, //slideshow duration in seconds(3 to 6 Recommended)
+			close_all : '.piro_close,.piro_overlay',// add class .piro_overlay(with comma)if you want overlay click close piroBox
+			count_hit:true,
+			count_hit_url:'{:U('Index/counthit')}'
+
+	});
+});
+</script>
+<div id="content_box">
+<h3>相册:{$albumarr.album_name}>>图片列表</h3>
+<hr />
+<div class="clr"></div>
+<ul class="thumb">
+<volist name="photolist" id="vo">
+<li>
+<a href="__PUBLIC__/Uploads/Albums/b_{$vo.pickey}" class="pirobox_gall" id="{$vo.id}" title="{$vo.name}">
+<img src="__PUBLIC__/Uploads/Albums/s_{$vo.pickey}" alt="{$vo.name}" />
+</a>
+  <p>{$vo.name}<BR />点击:{$vo.hits}<BR />上传时间:{$vo.create_time|Date="Y-m-d",###}<BR />标签：{$vo.tag}</p>
+</li>
+</volist>
+</ul>
+
+<div class="clr"></div>
+{$pagebar} 
+<div class="clr"></div>
+
+</div>
+
+</html>

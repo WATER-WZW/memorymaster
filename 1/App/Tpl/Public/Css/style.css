@@ -1,0 +1,56 @@
+@charset utf-8;
+html{padding:0;margin:0;}
+body{padding:0;margin:0;background:#dbdbdb url(../Images/bg.jpg) repeat ;font-size:12px;font-family:Verdana, Arial, Helvetica, sans-serif; color:#000;}
+img{border:none}
+ul,h2,h3{margin:0; padding:0}
+li{list-style-type:none;}
+.clr{clear:both;}
+a {font-family:Verdana, Arial, Helvetica, sans-serif;color:#000;text-decoration:none;}
+a:hover{color:#3399FF;}
+hr{border:1px solid #E1E1E1; margin:5px 0 5px 0}
+.inputtxt_mid{padding:2px; border:#dfdfdf 1px solid; width:300px; color:#333; line-height:24px; height:20px;vertical-align:middle}
+.inputtxt_short{padding:2px; width:100px; color:#333; border:#dfdfdf 1px solid; line-height:24px; height:20px; vertical-align:middle}
+.styledselect{font-size:12px; border:#dfdfdf 1px solid; padding:3px; margin-right:5px;}
+.formbtn{display:inline-block;padding:3px 12px 1.99px; margin-top:10px;background:#486aaa;border:1px solid;border-color:#a0b3d6 #34538b #34538b #a0b3d6;color:#f3f3f3;line-height:16px;cursor:pointer;overflow:visible; margin-right:8px;}
+.eformbtn{display:inline-block;padding:3px 12px 1.99px; margin-top:1px;background:#486aaa;border:1px solid;border-color:#a0b3d6 #34538b #34538b #a0b3d6;color:#f3f3f3;line-height:16px;cursor:pointer;overflow:visible; margin-right:3px;}
+
+.header {width:100%; height:56px;}
+#main_container{width:90%; margin:0 auto} 
+#content_box{border:2px solid #848484; background:#fff; padding:15px;-moz-border-radius:10px;-webkit-border-radius:10px;-khtml-border-radius:10px;}
+#footer{border:2px solid #848484; background:#fff; padding:15px;-moz-border-radius:10px;-webkit-border-radius:10px;-khtml-border-radius:10px; text-align:center; color:#9A9A9A}
+
+/*信息提示*/
+#container_msg{border:2px solid #848484; background:#fff; padding:10px;-moz-border-radius:10px;-webkit-border-radius:10px;-khtml-border-radius:10px; width:500px; margin:0 auto; margin-top:50px;}
+#container_msg .footer { color: #797c80; padding-top: 5px; margin-top:10px; border-top:1px solid #E1E1E1; text-align: center;}
+#container_msg a, a:hover { color: #185787; }
+#container_msg h2{margin-bottom:10px;}
+#container_msg h3{margin-bottom:20px;}
+
+/*表格*/
+.contools{border:1px solid #e4e4e4;}
+.contools td{border-bottom:1px #ccc dotted;padding:10px;}
+
+/*导航菜单*/
+ul#navigation{position:fixed;margin:0;padding:0;top:0;right:10px;list-style:none;z-index:999;width:550px;}
+ul#navigation li{width:103px;display:inline;float:left;}
+ul#navigation li a{display:block;float:left;margin-top:-2px;width:100px;height:25px;background-color:#1E1E1E;background-repeat:no-repeat;background-position:50% 10px;border:1px solid #000;-moz-border-radius:0 0 10px 10px;-webkit-border-bottom-right-radius:10px;-webkit-border-bottom-left-radius:10px;-khtml-border-bottom-right-radius:10px;-khtml-border-bottom-left-radius:10px;text-decoration:none;text-align:center;padding-top:80px;opacity:0.7;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);}
+ul#navigation li a:hover{background-color:#1E1E1E;}
+ul#navigation li a span{letter-spacing:2px;font-size:12px;color:#fff; line-height:25px}
+ul#navigation .home a{background-image:url(../Images/menu/computer.png);}
+ul#navigation .wall a{background-image:url(../Images/menu/picture.png);}
+ul#navigation .photos a{background-image:url(../Images/menu/photo-camera.png);}
+ul#navigation .setting a{background-image:url(../Images/menu/configuration.png);}
+ul#navigation .clear a{background-image:url(../Images/menu/bin-empty.png);}
+
+/*相册*/
+ul.thumb {float: left;list-style: none;margin: 0; padding-top: 10px;}
+ul.thumb li {margin:5px 8px ;margin:5px 7px\9 ; padding: 5px;float: left;width: 160px; height:245px;position: relative; overflow:hidden;}
+ul.thumb li img {width: 150px; border: 1px solid #ddd;padding: 5px;background: #f0f0f0;position: absolute;left: 0;top: 0;}
+ul.thumb li p{margin-top:3px;padding: 5px;width: 150px; height:65px;background:#fff;border: 1px solid #ddd; overflow:hidden;position: absolute; left:0; top:160px;}
+.covertitle{position:absolute;width:88px;height:87px;margin:0;background:url(../Images/cover.png) no-repeat;left:0; top:0;z-index:100 }
+
+/*排序*/
+#sortable {list-style-type: none; margin: 0; padding: 0; border:1px solid #E1E1E1; overflow:hidden}
+#sortable li {margin:5px 8px ; padding: 5px;float: left;width: 160px; height:200px;overflow:hidden; cursor:pointer}
+#sortable li img {width: 150px; border: 1px solid #ddd;padding: 5px;background: #f0f0f0;}
+#sortable p{margin-top:2px;padding: 5px;width: 150px; height:20px;background:#fff; border: 1px solid #ddd; overflow:hidden; text-align:center; line-height:20px}

@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-cn">
+
+<include file="Public:head" />
+<load href="../Public/Js/jquery.akeditable.js">
+
+<div id="content_box">
+
+<form name="form1" id="form1" method="post" action="{:U('Album/newalbum')}">
+<h3>
+所属标签：<input type="radio" name="altag" value="游戏" checked/> 游戏
+<input type="radio" name="altag" value="体育" /> 体育
+<input type="radio" name="altag" value="旅游" /> 旅游
+<input type="radio" name="altag" value="生活" /> 生活
+<input type="radio" name="altag" value="搞笑" /> 搞笑
+<input type="radio" name="altag" value="动漫" /> 动漫
+  <br />
+主题名称:<input type="text" name="album_name" size="30" maxlength="20" class="inputtxt_small" id="album_name" />
+<input type="submit" name="submit" value="创建主题" class="formbtn" />
+  
+<BR />可设密码:<input type="text" name="mypassword" size="30" maxlength="20" class="inputtxt_small" id="mypassword" />
+
+
+
+</h3>
+</form>
+
+<!--
+<form name="form1" id="form1" method="post" action="{:U('Album/newalbum')}">
+<h3>新增相册:<input type="text" name="album_name"/>
+<input type="submit" name="submit" value="提交"/>
+</h3>
+</form>
+-->
+<!--
+<form action="{:U('Album/newalbum')}" method="post">
+Enter your name: <input type="text" name="album_name" />
+<input type="submit" />
+</form>
+-->
+<hr />
+<div class="clr"></div>
+
+
+<ul class="thumb">
+<volist name="albumlist" id="vo">
+<li id="list{$vo.id}">
+<a href="{:U('Album/listphoto',array('id'=>$vo['id']))}">
+<if condition="empty($vo['cover'])" >
+<img src="../Public/Images/nocover.jpg" alt="{$vo.album_name}" />
+<else />
+<img src="__PUBLIC__/Uploads/Albums/b_{$vo.cover}" alt="{$vo.album_name}" />
+</if>
+</a>
+<p>相册:<span id="clname{$vo.id}">{$vo.album_name}</span><BR />相片数:{$vo.imgnum}<BR />相册编号:{$vo.id}<BR />点击:{$vo.hits}<BR /><a href="javascript:;" onclick="akedit('{:U('Album/editalbumname',array('id'=>$vo['id'],'oldname'=>$vo['album_name']))}','clname{$vo.id}',{
+		        type : 'text',
+				name : 'album_name',
+                cssname:'inputtxt_short',
+                btncss:'eformbtn',
+	            submit:'修改'
+				});">修改</a> | <a href="javascript:;" onclick="removeData({$vo.id},'{:U('Album/delalbum',array('id'=>$vo['id']))}','确定删除此相册？此操作将同时删除此相册下相片','#list{$vo.id}');">删除</a></p>
+  标签：{$vo.tag}
+</li>
+</volist>
+</ul>
+<div class="clr"></div>
+
+<div class="clr"></div>
+{$pagebar} 
+<div class="clr"></div>
+</div>
+</html>

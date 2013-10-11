@@ -1,0 +1,43 @@
+
+<include file="Public/head" />
+<load href="../Public/Js/ui/jquery.ui.core.js"/>
+<load href="../Public/Js/ui/jquery.ui.widget.js"/>
+<load href="../Public/Js/ui/jquery.ui.mouse.js"/>
+<load href="../Public/Js/ui/jquery.ui.sortable.js"/>
+<script>
+$(function() {
+$( "#sortable" ).sortable();
+$( "#sortable" ).disableSelection();
+});
+function save_sort_edit(){
+		var result = $('#sortable').sortable('toArray');
+		//alert(result);
+		ajaxpost('post','{:U('Album/savesortalbum')}','json',{'mysortresult':result});
+}
+</script>
+
+<div id="content_box">
+<h3><input type="button" name="submit" value="返回相册列表" class="formbtn" onclick="javascript:window.location='{:U('Album/index')}'" />相册排序</h3>
+<hr />
+<div class="clr"></div>
+
+<ul id="sortable">
+<volist name="albumlist" id="vo">
+
+	<li id="{$vo.id}">
+    <if condition="empty($vo['cover'])" >
+<img src="../Public/Images/nocover.jpg" alt="{$vo.album_name}" />
+<else />
+<img src="__PUBLIC__/Uploads/Albums/s_{$vo.cover}" alt="{$vo.album_name}" />
+</if>
+<p>{$vo.album_name}</p></li>
+</volist>
+</ul>
+<div class="clr"></div>
+<p>
+<input type="button" class="formbtn" value="保存排序"  onclick="save_sort_edit()">
+</p>
+<p id="resultarea"></p>
+
+
+</div>
